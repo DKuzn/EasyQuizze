@@ -15,6 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
+import sys
+
 
 class Question:
     def __init__(self, question: str):
@@ -31,8 +34,16 @@ class Question:
         return self.answers[self.right]
 
 
+def get_path(relative_path: str):
+    try:
+        path = sys._MEIPASS
+    except FileNotFoundError:
+        path = os.path.abspath('.')
+    return os.path.join(path, relative_path)
+
+
 def get_questions():
-    with open('../resources/questions.txt') as f:
+    with open(get_path('../resources/questions.txt'), encoding='UTF-8') as f:
         data = f.read()
 
     data = data.split('\t')
