@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import sys
 
 
 class Question:
@@ -35,11 +34,7 @@ class Question:
 
 
 def get_path(relative_path: str):
-    try:
-        path = sys._MEIPASS
-    except FileNotFoundError:
-        path = os.path.abspath('.')
-    return os.path.join(path, relative_path)
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), relative_path))
 
 
 def get_questions():
