@@ -1,0 +1,1 @@
+pyinstaller --onefile --add-data="../resources/questions.txt:../resources"  ../src/easy_quizze.py
