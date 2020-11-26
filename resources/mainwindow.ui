@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
+    <width>715</width>
     <height>350</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>705</width>
+    <width>715</width>
     <height>350</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>705</width>
+    <width>715</width>
     <height>350</height>
    </size>
   </property>
@@ -38,6 +38,11 @@
     <layout class="QGridLayout" name="gridLayout">
      <item row="6" column="0">
       <widget class="QPushButton" name="startButton">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Начать викторину</string>
        </property>
@@ -93,6 +98,11 @@
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Следующий вопрос</string>
        </property>
@@ -135,20 +145,20 @@
      <rect>
       <x>520</x>
       <y>20</y>
-      <width>162</width>
+      <width>171</width>
       <height>311</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="2" column="0">
-      <widget class="QLabel" name="label">
+     <item row="0" column="0" colspan="2" alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>30</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Статус</string>
+        <string>Счет</string>
        </property>
       </widget>
      </item>
@@ -176,15 +186,15 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0" colspan="2" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_2">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
        <property name="font">
         <font>
-         <pointsize>30</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Счет</string>
+        <string>Статус</string>
        </property>
       </widget>
      </item>
