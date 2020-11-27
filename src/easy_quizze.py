@@ -28,6 +28,7 @@ class EasyQuizzeApp(QtWidgets.QMainWindow, mainwindow.Ui_mainWindow):
         self.score_count = 0
         self.question_number = 0
         self.quezze_is_end = False
+        self.last_q = False
         self.questions = get_questions()
         self.startButton.clicked.connect(self.start_button_clicked)
         self.nextButton.clicked.connect(self.next_button_clicked)
@@ -45,25 +46,32 @@ class EasyQuizzeApp(QtWidgets.QMainWindow, mainwindow.Ui_mainWindow):
 
     def next_button_clicked(self):
         if not self.quezze_is_end:
-            if self.answer1Button.isChecked():
-                answer = self.answer1Button.text()
-            elif self.answer2Button.isChecked():
-                answer = self.answer2Button.text()
-            elif self.answer3Button.isChecked():
-                answer = self.answer3Button.text()
-            else:
-                answer = self.answer4Button.text()
-            right = self.check_answer(self.question_number, answer)
-            if right:
-                self.score_count += 4
+            self.get_answer()
             self.score.setText(str(self.score_count))
             self.question_number += 1
             if self.question_number == len(self.questions) - 1:
                 self.quezze_is_end = True
+                self.last_q = True
             self.place_question(self.question_number)
-        else:
+        elif self.last_q:
+            self.get_answer()
+            self.score.setText(str(self.score_count))
+            self.last_q = False
             self.quizze_status.setText('Завершена')
             self.quizze_status.setStyleSheet('color: green')
+
+    def get_answer(self):
+        if self.answer1Button.isChecked():
+            answer = self.answer1Button.text()
+        elif self.answer2Button.isChecked():
+            answer = self.answer2Button.text()
+        elif self.answer3Button.isChecked():
+            answer = self.answer3Button.text()
+        else:
+            answer = self.answer4Button.text()
+        right = self.check_answer(self.question_number, answer)
+        if right:
+            self.score_count += 4
 
     def place_question(self, number):
         self.question.setText(self.questions[number].question)
